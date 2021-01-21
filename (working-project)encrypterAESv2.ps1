@@ -24,7 +24,7 @@ $encryptedString = [System.Convert]::ToBase64String($fullData);
 
 #add key that we will use use to decrypt in f ile 
 $withKey=$key+$encryptedString
-cicle=''
+$cicle=''
 
 #subencryptions
 for ($i = 0; $i -le 10; $i++) {
