@@ -26,8 +26,9 @@ for ($i = 1; $i -le 5; $i++) {
 
     #add key that we will use use to decrypt in f ile 
     $withKey=$key+$encryptedString
-    $code=$withkey
+    $code="IEX($key=$withKey.substring(0,44);$bytes=[System.Convert]::FromBase64String($withKey.substring(44));$IV = $bytes[0..15];$aes = New-Object "System.Security.Cryptography.AesManaged";$aes.Mode = [System.Security.Cryptography.CipherMode]::CBC;$aes.Padding = [System.Security.Cryptography.PaddingMode]::Zeros;$aes.BlockSize = 128;$aes.KeySize = 256;$aes.IV = $IV;$aes.Key = [System.Convert]::FromBase64String($key);$decryptor = $aes.CreateDecryptor();$unencryptedData = $decryptor.TransformFinalBlock($bytes, 16, $bytes.Length - 16);$aes.Dispose();$backToPlainText=[System.Text.Encoding]::UTF8.GetString($unencryptedData).Trim([char]0);IEX($backToPlainText);)"
+
 }
 
 #save the file on the Desktop
-[System.IO.File]::WriteAllText("$env:userprofile\desktop\file",$withKey)
+[System.IO.File]::WriteAllText("$env:userprofile\desktop\file",$code)
