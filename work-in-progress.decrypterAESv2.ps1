@@ -12,7 +12,7 @@ $stub_template = ''
 for ($i = 0; $i -le 10; $i++) {
         $code_alternatives  = @()
         $code_alternatives += '${2} = [System.Convert]::FromBase64String("{0}")' + "`r`n"
-        $code_alternatives += '${3} = {1}' + "`r`n"
+        $code_alternatives += '${3} = [System.Convert]::FromBase64String("{1}")' + "`r`n"
 
         $code_alternatives += '${4} = New-Object "System.Security.Cryptography.AesManaged"' + "`r`n"
         $code_alternatives += '${4}.Mode = [System.Security.Cryptography.CipherMode]::'+'CBC' + "`r`n"
